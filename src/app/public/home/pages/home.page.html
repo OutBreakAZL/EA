@@ -1,0 +1,10 @@
+<h1>{{ 'HOME_TITLE' | translate }}</h1>
+
+<section>
+  <h2>{{ 'ACTIVE_CAMPAIGNS' | translate }}</h2>
+  <mat-grid-list cols="2" rowHeight="1:1">
+    <mat-grid-tile *ngFor="let campaign of campaignService.getAllCampaigns() | async">
+      <app-campaign [campaign]="campaign"></app-campaign>
+    </mat-grid-tile>
+  </mat-grid-list>
+</section>

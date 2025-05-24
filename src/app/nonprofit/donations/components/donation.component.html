@@ -1,0 +1,38 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>{{ 'DONOR_ID' | translate }}</mat-label>
+    <input matInput formControlName="donorId" type="number" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>{{ 'SELECT_CAMPAIGN' | translate }}</mat-label>
+    <mat-select formControlName="campaignId">
+      <mat-option *ngFor="let c of campaigns" [value]="c.id">
+        {{ c.name }} - {{ c.location }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>{{ 'ITEM_TYPE' | translate }}</mat-label>
+    <mat-select formControlName="itemType">
+      <mat-option value="Jackets">Jackets</mat-option>
+      <mat-option value="Blankets">Blankets</mat-option>
+      <mat-option value="Pants">Pants</mat-option>
+      <mat-option value="Shoes">Shoes</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>{{ 'QUANTITY' | translate }}</mat-label>
+    <input matInput formControlName="quantity" type="number" />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">
+    {{ 'REGISTER_DONATION' | translate }}
+  </button>
+
+  <p style="margin-top: 1em;" *ngIf="message">
+    {{ message | translate }}
+  </p>
+</form>
